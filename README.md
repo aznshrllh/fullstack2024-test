@@ -20,10 +20,11 @@ Aplikasi manajemen data klien dengan arsitektur **terpisah** antara backend dan 
 
 ## 📁 Struktur Proyek
 
+```
 my-client-app/
 ├── server/           # Backend menggunakan Node.js, Express, Sequelize
 ├── frontend/         # Frontend menggunakan Vite, TypeScript, ShadCN
-
+```
 
 ---
 
@@ -59,6 +60,7 @@ my-client-app/
 Content-Type: `multipart/form-data`
 
 **Body:**
+
 - `name`: Test Client
 - `slug`: test-client
 - `is_project`: 1
@@ -95,6 +97,7 @@ Content-Type: `multipart/form-data`
 Content-Type: `multipart/form-data`
 
 **Body:**
+
 - `name`: Updated Client Name
 - `city`: New City
 
@@ -127,19 +130,20 @@ Content-Type: `multipart/form-data`
 ## 🗄️ Struktur Tabel PostgreSQL
 
 ```sql
-CREATE TABLE my_client ( 
-  id INT NOT NULL GENERATED ALWAYS AS IDENTITY, 
-  name CHAR(250) NOT NULL, 
-  slug CHAR(100) NOT NULL, 
-  is_project VARCHAR(30) CHECK (is_project IN ('0', '1')) NOT NULL DEFAULT '0', 
-  self_capture CHAR(1) NOT NULL DEFAULT '1', 
-  client_prefix CHAR(4) NOT NULL, 
-  client_logo CHAR(255) NOT NULL DEFAULT 'no-image.jpg', 
-  address TEXT DEFAULT NULL, 
-  phone_number CHAR(50) DEFAULT NULL, 
-  city CHAR(50) DEFAULT NULL, 
-  created_at TIMESTAMP(0) DEFAULT NULL, 
-  updated_at TIMESTAMP(0) DEFAULT NULL, 
-  deleted_at TIMESTAMP(0) DEFAULT NULL, 
-  PRIMARY KEY (id) 
+CREATE TABLE my_client (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+  name CHAR(250) NOT NULL,
+  slug CHAR(100) NOT NULL,
+  is_project VARCHAR(30) CHECK (is_project IN ('0', '1')) NOT NULL DEFAULT '0',
+  self_capture CHAR(1) NOT NULL DEFAULT '1',
+  client_prefix CHAR(4) NOT NULL,
+  client_logo CHAR(255) NOT NULL DEFAULT 'no-image.jpg',
+  address TEXT DEFAULT NULL,
+  phone_number CHAR(50) DEFAULT NULL,
+  city CHAR(50) DEFAULT NULL,
+  created_at TIMESTAMP(0) DEFAULT NULL,
+  updated_at TIMESTAMP(0) DEFAULT NULL,
+  deleted_at TIMESTAMP(0) DEFAULT NULL,
+  PRIMARY KEY (id)
 );
+```
